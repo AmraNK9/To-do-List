@@ -112,5 +112,22 @@ checkBox_in_to_do.forEach((ele)=>{
     })
 })
 
+window.addEventListener('click',(e)=>{
+    if(e.target.classList[0] == 'edit'){
+        let parent = e.target.parentElement;
+        let value = e.target.previousElementSibling.previousElementSibling.innerHTML
+        e.target.previousElementSibling.value = value;
+        e.target.previousElementSibling.addEventListener('change',(el)=>{
+            parent.classList.toggle('editMode')
+
+            e.target.previousElementSibling.previousElementSibling.innerHTML = el.target.value
+        })
+        parent.classList.toggle('editMode')
+
+    }
+    if(e.target.classList[0] == 'delete'){
+        e.target.parentElement.parentElement.removeChild(e.target.parentElement)
+    }
+})
 
 // const editBtn = document.querySelector('.edit')
