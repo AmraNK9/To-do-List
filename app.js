@@ -6,11 +6,18 @@ const completed = document.querySelector("#completed-tasks");
 
 // local storage setup
 let todolist_item_string =
-  localStorage.getItem("todo") || '["Go to Shopping","To Sleep","To Eat"]';
+  localStorage.getItem("todo") || '[]';
 let todolist_item = JSON.parse(todolist_item_string);
-console.log(todolist_item);
 for (let i = 0; i < todolist_item.length; i++) {
   todo.innerHTML += `<li><input type="checkbox"><label>${todolist_item[i]}</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>`;
+}
+// let complete_item;
+let complete_item_string = 
+  localStorage.getItem('complete') || '[] '
+ let  complete_item = JSON.parse(complete_item_string)
+for(let i = 0; i < complete_item.length; i++){
+  completed.innerHTML += `			<li><input type="checkbox" checked><label>${complete_item[i]}</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+  `
 }
 
 //checkbox in to do
@@ -35,6 +42,11 @@ checkbox_in_completed.forEach((el) => {
     }
   });
 });
+// checkBox_in_to_do.forEach((el)=>{
+//   el.addEventListener('click',(e)=>{
+  
+//   })
+// })
 function reListenCompleted() {
   checkbox_in_completed = completed.querySelectorAll("input[type=checkbox]");
   checkbox_in_completed.forEach((el) => {
@@ -177,6 +189,59 @@ window.addEventListener("click", (e) => {
     parent.classList.toggle("editMode");
   }
   if (e.target.classList[0] == "delete") {
+    console.log(e.target.parentElement.parentElement.id)
+    if(e.target.parentElement.parentElement.id == 'incomplete-tasks'){
+      console.log(e.target.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML)
+      todolist_item.splice(todolist_item.indexOf(e.target.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML),1)
+      localStorage.setItem('todo',JSON.stringify(todolist_item))
+    }
+    // if(e.target.parentElement.parentElement == )
+
     e.target.parentElement.parentElement.removeChild(e.target.parentElement);
+
   }
 });
+
+//pust complete localstorage list string to next item
+todo.addEventListener('click',(e)=>{
+  console.log(e.target.tagName)
+ if( e.target.tagName=='INPUT'){
+  if( e.target.getAttribute('type')=='checkbox'){
+    if(e.target.checked == true){
+      complete_item.push(e.target.nextElementSibling.innerHTML)
+      let complete_item_list = JSON.stringify(complete_item)
+      localStorage.setItem('complete',complete_item_list)
+      todolist_item.splice(todolist_item.indexOf(e.target.nextElementSibling.innerHTML),1)
+      localStorage.setItem('todo',JSON.stringify(todolist_item))
+    }
+  }
+ }
+})
+
+console.log(todolist_item,complete_item)
+
+completed.addEventListener('click',(e)=>{
+
+  if(e.target.tagName == 'INPUT' && e.target.getAttribute('type')=='checkbox'){
+    if(e.target.checked == false){
+      console.log('run')
+
+      todolist_item.push(e.target.nextElementSibling.innerHTML)
+      console.log(todolist_item)
+      localStorage.setItem('todo',JSON.stringify(todolist_item));
+      complete_item.splice(complete_item.indexOf(e.target.innerHTML),1);
+      console.log(complete_item)
+      localStorage.setItem('complete',JSON.stringify(complete_item))
+    }
+
+  }
+})
+input_text.addEventListener("keypress", function(event) {
+  // Check if the key pressed was the Enter key
+  if (event.key === "Enter") {
+    // Do something when the Enter key is pressed
+    console.log("Enter key pressed");
+    addBtn.click()
+  }
+});
+
