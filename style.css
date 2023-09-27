@@ -7,25 +7,22 @@ body {
 	font-family: Lato, sans-serif;
 	background-repeat: no-repeat;
 	background: linear-gradient;
-	background: linear-gradient(45deg, #FF9A8B, #FF6A88, #FF99AC, #FFCE44);
-/* background-size: 800% 800%; */
-animation: gradientBackground 10s ease infinite;
-
-
-
+	background: linear-gradient(45deg, #ff9a8b, #ff6a88, #ff99ac, #ffce44);
+	background-size: 800% 800%;
+	animation: gradientBackground 6s ease infinite;
 }
 
 @keyframes gradientBackground {
 	0% {
-	  background-position: 0% 50%;
+		background-position: 0% 50%;
 	}
 	50% {
-	  background-position: 100% 50%;
+		background-position: 100% 50%;
 	}
 	100% {
-	  background-position: 0% 50%;
+		background-position: 0% 50%;
 	}
-  }
+}
 
 .container {
 	padding: 10px 200px;
@@ -33,17 +30,17 @@ animation: gradientBackground 10s ease infinite;
 	width: 400px;
 	margin: 10px auto 100px;
 	background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-	padding:0px 10px 10px 10px;
-	border-radius:10px;
+	backdrop-filter: blur(10px);
+	border-radius: 10px;
+	padding: 0px 10px 10px 10px;
+	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
-	text-align:center;
-	padding-top:10px;
-	margin-bottom:0px;
+	text-align: center;
+	padding-top: 10px;
+	margin-bottom: 0px;
 	color: hsl(180, 180%, 180%);
 	text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
 }
@@ -83,11 +80,10 @@ button:hover {
 	color: #333;
 }
 
-
 /* Heading */
 
 h3,
-label[for='new-task'] {
+label[for="new-task"] {
 	color: #333;
 	font-weight: 700;
 	font-size: 15px;
@@ -114,10 +110,9 @@ input[type="text"]:focus {
 	color: #333;
 }
 
-
 /* New Task */
 
-label[for='new-task'] {
+label[for="new-task"] {
 	display: block;
 	margin: 0 0 20px;
 }
@@ -128,9 +123,8 @@ input#new-task {
 }
 
 p > button:hover {
-	color: #0FC57C;
+	color: #0fc57c;
 }
-
 
 /* Task list */
 
@@ -158,9 +152,8 @@ li > input[type="text"] {
 }
 
 li > .delete:hover {
-	color: #CF2323;
+	color: #cf2323;
 }
-
 
 /* Completed */
 
@@ -169,17 +162,25 @@ li > .delete:hover {
 	color: #888;
 }
 
-
 /* Edit Task */
 
-ul li input[type=text] {
+ul li input[type="text"] {
 	display: none;
 }
 
-ul li.editMode input[type=text] {
+ul li.editMode input[type="text"] {
 	display: block;
 }
 
 ul li.editMode label {
 	display: none;
+}
+@media(max-width:480px){
+	.container{
+		width: 320px;
+	}
+	input#new-task {
+		margin: 0 auto;
+		width: 258px;
+	}
 }
