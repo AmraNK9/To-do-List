@@ -6,14 +6,14 @@ const completed = document.querySelector("#completed-tasks");
 
 // local storage setup
 let todolist_item_string =
-  localStorage.getItem("todo") || '[]';
+  localStorage.getItem("todo") || '["To Containue To Love Yu"]';
 let todolist_item = JSON.parse(todolist_item_string);
 for (let i = 0; i < todolist_item.length; i++) {
   todo.innerHTML += `<li><input type="checkbox"><label>${todolist_item[i]}</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>`;
 }
 // let complete_item;
 let complete_item_string = 
-  localStorage.getItem('complete') || '[] '
+  localStorage.getItem('complete') || '["To Love Yu"] '
  let  complete_item = JSON.parse(complete_item_string)
 for(let i = 0; i < complete_item.length; i++){
   completed.innerHTML += `			<li><input type="checkbox" checked><label>${complete_item[i]}</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
