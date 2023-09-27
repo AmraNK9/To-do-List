@@ -180,7 +180,7 @@ ul li.editMode label {
 		width: 320px;
 	}
 	input#new-task {
-		margin: 0 auto;
-		width: 258px;
+		float: left;;
+		width: 230px;
 	}
 }
