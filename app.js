@@ -138,7 +138,7 @@ function Check_Incompleted() {
 //Event Setup
 
 //assign value  when input text change
-input_text.addEventListener("keydown", input_text_Value_assign);
+input_text.addEventListener("keyup", input_text_Value_assign);
 
 //add list to todolist tag when add button click
 addBtn.addEventListener("click", () => {
